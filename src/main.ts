@@ -3,8 +3,6 @@ import { getMarketHistory } from "./marketHistory.js";
 import { getMarketOrders } from "./marketOrders.js";
 import express from 'express';
 
-//This is a test line.
-
 const app = express()
 const port = 3000
 
