@@ -6,12 +6,23 @@ import express from 'express';
 const app = express()
 const port = 3000
 
-app.get('/', routeDefault)
+app.get('/api', routeDefault)
 
-async function routeDefault(_request: express.Request, response: express.Response) {
+async function routeDefault(request: express.Request, response: express.Response) {
+    const regionId = request.query.region
+    const typeId = request.query.type
 
-    const currentOrder = await getMarketOrders()
-    const currentHistory = await getMarketHistory()
+    if (typeof regionId != `string`) {
+        response.sendStatus(400);
+        return;
+    }
+    if (typeof typeId != `string`) {
+        response.sendStatus(400);
+        return;
+    }
+
+    const currentOrder = await getMarketOrders(regionId, typeId)
+    const currentHistory = await getMarketHistory(regionId, typeId)
     const averageOutput = averageFinder(currentHistory);
     const marketSignifier = marketIndex(averageOutput);
     const marginalOrders = minmax(currentOrder)
@@ -112,3 +123,5 @@ function capturedValue(marketValue: number, estimatedCapture: number): number {
     // TODO: Determine how to calculate the percentage of capturable market.
     return marketValue * estimatedCapture;
 }
+
+export {};

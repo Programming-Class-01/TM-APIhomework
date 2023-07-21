@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Eve Online Market Analyzer
+        </title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <script defer src="../build/html/index.js"></script>
+    <body>
+        <h1>The following is a breakdown of a number of market factors for the given item in Eve Online.</h1>
+        <h2>Region ID<input id="RegionID" type="number"></h2>
+        <h3>Type ID<input id="TypeID" type="number"></h3>
+        <p id="content">this should be json.</p>
+        <div onclick="apiCaller()" class="swap-button">API call</div>
+    </body>
+</html>

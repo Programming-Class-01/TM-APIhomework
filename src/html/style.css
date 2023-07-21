@@ -1,0 +1,34 @@
+:root {
+    --background: #c0bfbc;
+    --color: #000000;
+    --navButtonBackground: #32cd32;
+    --navButtonText: #8f00ff;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--color);
+}
+
+input {
+    width: 10%;
+}
+
+.swap-button {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: x-large;
+    font-weight: bolder;
+    border-color: #000000;
+    border-width: 1px;
+    border-style: solid;
+    width: 75px;
+    display: block;
+    overflow: hidden;
+    padding: 20px;
+    margin: 7px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: var(--color);
+    color: var(--background);
+    cursor: pointer;
+}
