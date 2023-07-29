@@ -124,4 +124,4 @@ function capturedValue(marketValue: number, estimatedCapture: number): number {
     return marketValue * estimatedCapture;
 }
 
-export {};
+export { };
