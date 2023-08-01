@@ -2,11 +2,16 @@ import { IMarketOrder, IMarketHistoryEntry, IMinMaxValue, IAverageValues } from 
 import { getMarketHistory } from "./marketHistory.js";
 import { getMarketOrders } from "./marketOrders.js";
 import express from 'express';
+import cors from "cors";
 
 const app = express()
 const port = 3000
 
-app.get('/api', routeDefault)
+// app.use(
+//     cors({origin: `http://localhost:3000/api?region=&type=`
+// }))
+
+app.get('/api',cors(), routeDefault)
 
 async function routeDefault(request: express.Request, response: express.Response) {
     const regionId = request.query.region
