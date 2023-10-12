@@ -42,20 +42,21 @@ async function routeDefault(request: express.Request, response: express.Response
     const roi = 100 * (capturedValue(marketValue, estimatedCapture) / costToMarket);
 
     const result = {
-        Average_Average: averageOutput.averageOfAverage.toFixed(2),
-        Average_High: averageOutput.averageOfHigh.toFixed(2),
-        Average_Low: averageOutput.averageOfLow.toFixed(2),
-        Average_Volume: averageOutput.averageOfVolume.toFixed(2),
-        Market_signifier: marketSignifier.toFixed(2),
-        Marginal_Orders_Buy: marginalOrders.highBuy,
-        Sell: marginalOrders.lowSell,
-        Market_Pass_Through: marketPassThru.toFixed(2),
-        Raw_Margin: marginRaw.toFixed(2),
+        Average_Average: averageOutput.averageOfAverage.toFixed(2), //works
+        Average_High: averageOutput.averageOfHigh.toFixed(2), //works
+        Average_Low: averageOutput.averageOfLow.toFixed(2), //works
+        Average_Volume: averageOutput.averageOfVolume.toFixed(2), //works
+        Market_signifier: marketSignifier.toFixed(2), //works
+        Marginal_Orders_Buy: marginalOrders.highBuy, //works
+        Sell: marginalOrders.lowSell, //works
+        Market_Pass_Through: marketPassThru.toFixed(2), //works
+        Return_on_Investment: roi.toFixed(2), //works
+        Raw_Margin: marginRaw.toFixed(2), 
         Market_Value: marketValue.toFixed(2),
         Captured_Units: capturedUnits.toFixed(2),
-        Cost_to_Market: costToMarket.toFixed(2),
-        Return_on_Investment: roi.toFixed(2)
+        Cost_to_Market: costToMarket.toFixed(2)
     }
+    console.log(result.Raw_Margin)
 
     response.send(result)
 }
@@ -78,7 +79,13 @@ function minmax(orders: IMarketOrder[]): IMinMaxValue {
 }
 
 function averageFinder(histories: IMarketHistoryEntry[]): IAverageValues {
-    const result: IAverageValues = { averageOfVolume: 0, averageOfHigh: 0, averageOfLow: 0, averageOfAverage: 0 }
+    const result: IAverageValues = { 
+        averageOfVolume: 0, 
+        averageOfHigh: 0,
+        averageOfLow: 0, 
+        averageOfAverage: 0 
+    }
+
     for (const history of histories) {
         result.averageOfVolume += history.volume
         result.averageOfHigh += history.highest
